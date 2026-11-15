@@ -81,10 +81,10 @@
       /* ---------- HERO ---------- */
       .hero{padding:88px 0 96px}
       .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:64px;align-items:start}
-      .hero h1{font-size:clamp(3rem,6vw,5.1rem);line-height:1.02;font-weight:600;color:var(--green-deep)}
-      .hero h1 .line2{display:block;font-style:italic;font-weight:500}
+      .hero h1{font-size:clamp(1.85rem,3vw,2.45rem);line-height:1.12;font-weight:600;color:var(--green-deep)}
+      .hero h1 .line2{display:inline;font-style:italic;font-weight:500}
       .hero h1 .accent{color:var(--purple)}
-      .hero .tagline{font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.05rem);font-weight:500;line-height:1.25;color:var(--green-deep);margin-top:24px}
+      .hero .tagline{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.9rem,5.8vw,4.9rem);font-weight:600;line-height:1.05;letter-spacing:-.01em;color:var(--green-deep);margin-top:18px}
       .hero .tagline .accent{color:var(--purple);font-style:italic}
       .hero .tagline .swap{display:inline-block;transition:opacity 300ms ease,transform 300ms ease}
       .hero .tagline .swap.swap-out{opacity:0;transform:translateY(5px)}
@@ -220,8 +220,7 @@
       <div class="hero">
         <div class="wrap hero-grid">
           <div>
-            <p class="eyebrow">Project Sunflower · Birmingham, Alabama</p>
-            <h1>Returning<span class="line2">in <span class="accent">2027.</span></span></h1>
+            <h1>Returning <span class="line2">in <span class="accent">2027.</span></span></h1>
             <p class="tagline">Your <span class="swap" id="swapA">Happiness</span>. Our <span class="accent"><span class="swap" id="swapB">Passion</span>.</span></p>
             <p class="mission">
               Sunflowers radiate joy &amp; happiness, just like one act of kindness can bring to our lives.
@@ -445,8 +444,8 @@
         var a = document.getElementById('swapA');
         var b = document.getElementById('swapB');
         if (!a || !b) return;
-        var wordsA = ['Happiness', 'Joy', 'Smile'];
-        var wordsB = ['Passion', 'Mission', 'Kindness'];
+        var wordsA = ['Happiness', 'Joy', 'Hope'];
+        var wordsB = ['Passion', 'Mission', 'Purpose'];
         var i = 0;
         setInterval(function () {
           a.classList.add('swap-out');
