@@ -86,6 +86,8 @@
       .hero h1 .accent{color:var(--purple)}
       .hero .tagline{font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.05rem);font-weight:500;line-height:1.25;color:var(--green-deep);margin-top:24px}
       .hero .tagline .accent{color:var(--purple);font-style:italic}
+      .hero .tagline .swap{display:inline-block;transition:opacity 300ms ease,transform 300ms ease}
+      .hero .tagline .swap.swap-out{opacity:0;transform:translateY(5px)}
       .hero .mission{margin-top:30px;font-size:1.14rem;line-height:1.7;color:var(--ink-soft);max-width:34em}
       .hero .plain{margin-top:16px;font-size:1.02rem;line-height:1.7;color:var(--ink-soft);max-width:34em}
       .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px 30px;margin-top:36px}
@@ -194,6 +196,7 @@
       }
       @media (prefers-reduced-motion: reduce){
         html{scroll-behavior:auto}
+        .hero .tagline .swap{transition:none}
       }
     </style>
   </head>
@@ -219,7 +222,7 @@
           <div>
             <p class="eyebrow">Project Sunflower · Birmingham, Alabama</p>
             <h1>Returning<span class="line2">in <span class="accent">2027.</span></span></h1>
-            <p class="tagline">Your Happiness. Our <span class="accent">Passion.</span></p>
+            <p class="tagline">Your <span class="swap" id="swapA">Happiness</span>. Our <span class="accent"><span class="swap" id="swapB">Passion</span>.</span></p>
             <p class="mission">
               Sunflowers radiate joy &amp; happiness, just like one act of kindness can bring to our lives.
               Project Sunflower promotes mental wellness and joy across our communities and stands to bring
@@ -434,6 +437,28 @@
             document.body.removeChild(ta);
           }
         });
+      })();
+    </script>
+    <script>
+      (function () {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var a = document.getElementById('swapA');
+        var b = document.getElementById('swapB');
+        if (!a || !b) return;
+        var wordsA = ['Happiness', 'Joy', 'Smile'];
+        var wordsB = ['Passion', 'Mission', 'Kindness'];
+        var i = 0;
+        setInterval(function () {
+          a.classList.add('swap-out');
+          b.classList.add('swap-out');
+          setTimeout(function () {
+            i = (i + 1) % wordsA.length;
+            a.textContent = wordsA[i];
+            b.textContent = wordsB[i];
+            a.classList.remove('swap-out');
+            b.classList.remove('swap-out');
+          }, 300);
+        }, 2000);
       })();
     </script>
   </body>
